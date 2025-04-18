@@ -122,6 +122,7 @@ exports.Prisma.ReservationScalarFieldEnum = {
   email: 'email',
   name: 'name',
   appointment: 'appointment',
+  isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

@@ -19,6 +19,7 @@ model Reservation {
   email       String
   name        String
   appointment DateTime?
+  isActive    Boolean   @default(true)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

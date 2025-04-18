@@ -1,6 +1,7 @@
-import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import { HttpStatus, Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { CreateReservationDto } from './dto/create-reservation.dto';
 import { PrismaClient } from 'generated/prisma';
+import { RpcException } from '@nestjs/microservices';
 
 @Injectable()
 export class ReservationsService extends PrismaClient implements OnModuleInit {
@@ -11,7 +12,44 @@ export class ReservationsService extends PrismaClient implements OnModuleInit {
   private readonly logger = new Logger('ReservationsService');
 
   async create(createReservationDto: CreateReservationDto) {
-    this.logger.log(createReservationDto);
     await this.reservation.create({ data: createReservationDto });
+  }
+
+  async findAllReservations() {
+    try {
+      const reservation = await this.reservation.findMany({
+        where: { isActive: true },
+      });
+
+      return reservation;
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async findOneReservation(id: string) {
+    try {
+      const reservation = await this.reservation.findUnique({
+        where: { isActive: true, id },
+      });
+      if (!reservation)
+        throw new RpcException({
+          status: HttpStatus.NOT_FOUND,
+          message: 'No Reservation founded',
+        });
+
+      return reservation;
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  private handleError(error: any) {
+    if (error instanceof RpcException) throw error;
+    this.logger.error(error);
+    throw new RpcException({
+      status: HttpStatus.INTERNAL_SERVER_ERROR,
+      message: 'Please check logs',
+    });
   }
 }

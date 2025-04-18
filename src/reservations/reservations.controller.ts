@@ -1,5 +1,5 @@
-import { Controller } from '@nestjs/common';
-import { EventPattern, Payload } from '@nestjs/microservices';
+import { Controller, ParseUUIDPipe } from '@nestjs/common';
+import { EventPattern, MessagePattern, Payload } from '@nestjs/microservices';
 import { ReservationsService } from './reservations.service';
 import { CreateReservationDto } from './dto/create-reservation.dto';
 
@@ -10,5 +10,15 @@ export class ReservationsController {
   @EventPattern('create.reservation')
   create(@Payload() createReservationDto: CreateReservationDto) {
     return this.reservationsService.create(createReservationDto);
+  }
+
+  @MessagePattern({ cmd: 'get.reservations' })
+  findAll() {
+    return this.reservationsService.findAllReservations();
+  }
+
+  @MessagePattern({ cmd: 'get.one.reservations' })
+  findOne(@Payload('id', ParseUUIDPipe) id: string) {
+    return this.reservationsService.findOneReservation(id);
   }
 }

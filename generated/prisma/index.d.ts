@@ -884,6 +884,7 @@ export namespace Prisma {
     email: string | null
     name: string | null
     appointment: Date | null
+    isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -893,6 +894,7 @@ export namespace Prisma {
     email: string | null
     name: string | null
     appointment: Date | null
+    isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -902,6 +904,7 @@ export namespace Prisma {
     email: number
     name: number
     appointment: number
+    isActive: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -913,6 +916,7 @@ export namespace Prisma {
     email?: true
     name?: true
     appointment?: true
+    isActive?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -922,6 +926,7 @@ export namespace Prisma {
     email?: true
     name?: true
     appointment?: true
+    isActive?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -931,6 +936,7 @@ export namespace Prisma {
     email?: true
     name?: true
     appointment?: true
+    isActive?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1013,6 +1019,7 @@ export namespace Prisma {
     email: string
     name: string
     appointment: Date | null
+    isActive: boolean
     createdAt: Date
     updatedAt: Date
     _count: ReservationCountAggregateOutputType | null
@@ -1039,6 +1046,7 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     appointment?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["reservation"]>
@@ -1048,6 +1056,7 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     appointment?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["reservation"]>
@@ -1057,6 +1066,7 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     appointment?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["reservation"]>
@@ -1066,11 +1076,12 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     appointment?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ReservationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "appointment" | "createdAt" | "updatedAt", ExtArgs["result"]["reservation"]>
+  export type ReservationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "appointment" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["reservation"]>
 
   export type $ReservationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Reservation"
@@ -1080,6 +1091,7 @@ export namespace Prisma {
       email: string
       name: string
       appointment: Date | null
+      isActive: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["reservation"]>
@@ -1509,6 +1521,7 @@ export namespace Prisma {
     readonly email: FieldRef<"Reservation", 'String'>
     readonly name: FieldRef<"Reservation", 'String'>
     readonly appointment: FieldRef<"Reservation", 'DateTime'>
+    readonly isActive: FieldRef<"Reservation", 'Boolean'>
     readonly createdAt: FieldRef<"Reservation", 'DateTime'>
     readonly updatedAt: FieldRef<"Reservation", 'DateTime'>
   }
@@ -1896,6 +1909,7 @@ export namespace Prisma {
     email: 'email',
     name: 'name',
     appointment: 'appointment',
+    isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -1961,6 +1975,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -1985,6 +2006,7 @@ export namespace Prisma {
     email?: StringFilter<"Reservation"> | string
     name?: StringFilter<"Reservation"> | string
     appointment?: DateTimeNullableFilter<"Reservation"> | Date | string | null
+    isActive?: BoolFilter<"Reservation"> | boolean
     createdAt?: DateTimeFilter<"Reservation"> | Date | string
     updatedAt?: DateTimeFilter<"Reservation"> | Date | string
   }
@@ -1994,6 +2016,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     appointment?: SortOrderInput | SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2006,6 +2029,7 @@ export namespace Prisma {
     email?: StringFilter<"Reservation"> | string
     name?: StringFilter<"Reservation"> | string
     appointment?: DateTimeNullableFilter<"Reservation"> | Date | string | null
+    isActive?: BoolFilter<"Reservation"> | boolean
     createdAt?: DateTimeFilter<"Reservation"> | Date | string
     updatedAt?: DateTimeFilter<"Reservation"> | Date | string
   }, "id">
@@ -2015,6 +2039,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     appointment?: SortOrderInput | SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ReservationCountOrderByAggregateInput
@@ -2030,6 +2055,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"Reservation"> | string
     name?: StringWithAggregatesFilter<"Reservation"> | string
     appointment?: DateTimeNullableWithAggregatesFilter<"Reservation"> | Date | string | null
+    isActive?: BoolWithAggregatesFilter<"Reservation"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Reservation"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Reservation"> | Date | string
   }
@@ -2039,6 +2065,7 @@ export namespace Prisma {
     email: string
     name: string
     appointment?: Date | string | null
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2048,6 +2075,7 @@ export namespace Prisma {
     email: string
     name: string
     appointment?: Date | string | null
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2057,6 +2085,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     appointment?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2066,6 +2095,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     appointment?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2075,6 +2105,7 @@ export namespace Prisma {
     email: string
     name: string
     appointment?: Date | string | null
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2084,6 +2115,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     appointment?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2093,6 +2125,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     appointment?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2123,6 +2156,11 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2144,6 +2182,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     appointment?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2153,6 +2192,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     appointment?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2162,6 +2202,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     appointment?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2198,6 +2239,14 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2218,6 +2267,10 @@ export namespace Prisma {
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -2247,6 +2300,11 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -2311,6 +2369,14 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
