@@ -2,18 +2,18 @@ import 'dotenv/config';
 import * as joi from 'joi';
 
 interface EnvVars {
-  NATS_SERVERS: string[];
+  RMQ_SERVERS: string[];
 }
 
 const envsSchema = joi
   .object({
-    NATS_SERVERS: joi.array().items(joi.string()).required(),
+    RMQ_SERVERS: joi.array().items(joi.string()).required(),
   })
   .unknown(true);
 
 const validationSchema = envsSchema.validate({
   ...process.env,
-  NATS_SERVERS: process.env.NATS_SERVERS?.split(','),
+  RMQ_SERVERS: process.env.NATS_SERVERS?.split(','),
 });
 const error: joi.ValidationError | undefined = validationSchema.error;
 const value: EnvVars = validationSchema.value as EnvVars;
@@ -24,5 +24,5 @@ if (error) {
 const envVars: EnvVars = value;
 
 export const envs = {
-  nats_servers: envVars.NATS_SERVERS,
+  rmq_servers: envVars.RMQ_SERVERS,
 };

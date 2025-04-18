@@ -7,9 +7,9 @@ async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AppModule,
     {
-      transport: Transport.NATS,
+      transport: Transport.RMQ,
       options: {
-        servers: envs.nats_servers,
+        urls: envs.rmq_servers,
       },
     },
   );
