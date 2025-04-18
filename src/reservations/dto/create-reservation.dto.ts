@@ -6,5 +6,5 @@ export class CreateReservationDto {
   @IsDate()
   appointment: Date;
   @IsString()
-  description: string;
+  email: string;
 }
