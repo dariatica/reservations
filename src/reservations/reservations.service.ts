@@ -31,6 +31,7 @@ export class ReservationsService extends PrismaClient implements OnModuleInit {
     try {
       const reservation = await this.reservation.findUnique({
         where: { isActive: true, id },
+        omit: { isActive: true },
       });
       if (!reservation)
         throw new RpcException({
