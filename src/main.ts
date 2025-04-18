@@ -10,6 +10,7 @@ async function bootstrap() {
       transport: Transport.RMQ,
       options: {
         urls: envs.rmq_servers,
+        queue: 'reservations',
       },
     },
   );

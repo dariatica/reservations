@@ -13,7 +13,7 @@ const envsSchema = joi
 
 const validationSchema = envsSchema.validate({
   ...process.env,
-  RMQ_SERVERS: process.env.NATS_SERVERS?.split(','),
+  RMQ_SERVERS: process.env.RMQ_SERVERS?.split(','),
 });
 const error: joi.ValidationError | undefined = validationSchema.error;
 const value: EnvVars = validationSchema.value as EnvVars;
